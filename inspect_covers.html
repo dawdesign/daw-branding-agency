@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Inspect Covers</title>
+  <style>
+    body { font-family: sans-serif; background: #eee; padding: 20px; }
+    h1 { text-align: center; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card { background: white; padding: 10px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
+    .card img { max-width: 100%; height: 200px; object-fit: contain; }
+    .project-section { margin-top: 40px; }
+    .project-images { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .project-images img { max-width: 100%; height: 120px; object-fit: contain; background: #f9f9f9; }
+  </style>
+</head>
+<body>
+  <h1>Project Covers</h1>
+  <div class="grid">
+    <div class="card">
+      <h3>agapes</h3>
+      <img src="project_covers/agapes.jpg" alt="agapes">
+    </div>
+    <div class="card">
+      <h3>cafe-vito</h3>
+      <img src="project_covers/cafe-vito.png" alt="cafe-vito">
+    </div>
+    <div class="card">
+      <h3>doulux</h3>
+      <img src="project_covers/doulux.png" alt="doulux">
+    </div>
+    <div class="card">
+      <h3>echo</h3>
+      <img src="project_covers/echo.jpg" alt="echo">
+    </div>
+    <div class="card">
+      <h3>orpheus-lodge</h3>
+      <img src="project_covers/orpheus-lodge.jpg" alt="orpheus-lodge">
+    </div>
+    <div class="card">
+      <h3>pimas-candy</h3>
+      <img src="project_covers/pimas-candy.png" alt="pimas-candy">
+    </div>
+    <div class="card">
+      <h3>porc-pays</h3>
+      <img src="project_covers/porc-pays.png" alt="porc-pays">
+    </div>
+    <div class="card">
+      <h3>sna-vernon-giverny-affiches-touristiques</h3>
+      <img src="project_covers/sna-vernon-giverny-affiches-touristiques.jpg" alt="sna-vernon">
+    </div>
+    <div class="card">
+      <h3>starbooth-360</h3>
+      <img src="project_covers/starbooth-360.jpg" alt="starbooth-360">
+    </div>
+    <div class="card">
+      <h3>super-u</h3>
+      <img src="project_covers/super-u.png" alt="super-u">
+    </div>
+    <div class="card">
+      <h3>white-castle-rebranding</h3>
+      <img src="project_covers/white-castle-rebranding.png" alt="white-castle">
+    </div>
+  </div>
+
+  <h1>Project Page Images</h1>
+  <div id="page-sections"></div>
+
+  <script>
+    const projects = [
+      'orpheus-lodge',
+      'starbooth-360',
+      'sna-vernon-giverny-affiches-touristiques',
+      'porc-pays',
+      'doulux',
+      'white-castle-rebranding',
+      'super-u',
+      'cafe-vito',
+      'echo',
+      'pimas-candy',
+      'agapes'
+    ];
+    
+    const container = document.getElementById('page-sections');
+    projects.forEach(p => {
+      const section = document.createElement('div');
+      section.className = 'project-section';
+      section.innerHTML = `
+        <h2>${p}</h2>
+        <div class="project-images">
+          <img src="project_images/${p}/img_1.jpg" onerror="this.src='project_images/${p}/img_1.png'; this.onerror=null;">
+          <img src="project_images/${p}/img_2.jpg" onerror="this.src='project_images/${p}/img_2.png'; this.onerror=null;">
+          <img src="project_images/${p}/img_3.jpg" onerror="this.src='project_images/${p}/img_3.png'; this.onerror=null;">
+          <img src="project_images/${p}/img_4.jpg" onerror="this.src='project_images/${p}/img_4.png'; this.onerror=null;">
+        </div>
+      `;
+      container.appendChild(section);
+    });
+  </script>
+</body>
+</html>

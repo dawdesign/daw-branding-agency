@@ -1,0 +1,1409 @@
+/* ==========================================================================
+   DAW Branding Agency Landing Page - Design System & Styling
+   Theme: Premium Light (Art Gallery Minimalist)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Font Face Declarations (Satoshi Custom Font)
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Perfectly Nineties';
+  src: url('../fonts/perfectlynineties-regular_fontlota647.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Perfectly Nineties';
+  src: url('../fonts/perfectlynineties-regularitalic_fontlot2b14.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi Bold';
+  src: url('../fonts/Satoshi-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../fonts/Satoshi-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../fonts/Satoshi-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../fonts/Satoshi-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../fonts/Satoshi-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../fonts/Satoshi-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../fonts/Satoshi-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --------------------------------------------------------------------------
+   2. Design Tokens & Variables
+   -------------------------------------------------------------------------- */
+:root {
+  /* Colors */
+  --color-bg: #FFFFFF;
+  --color-text: #111111;
+  --color-text-muted: #666666;
+  --color-accent: #FFD32C; /* High contrast vibrant brand orange */
+  --color-accent-soft: rgba(255, 211, 44, 0.08);
+  --color-border: rgba(17, 17, 17, 0.08);
+  --color-border-glow: rgba(255, 211, 44, 0.2);
+  --grid-bg-color: rgba(17, 17, 17, 0.04);
+  
+  /* Fonts */
+  --font-sans: 'Satoshi', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  /* Shadows */
+  --shadow-premium: 0 30px 60px -15px rgba(17, 17, 17, 0.05);
+  --shadow-diffused: 0 20px 40px -20px rgba(17, 17, 17, 0.08);
+  --shadow-inset-glass: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 4px 20px -5px rgba(17, 17, 17, 0.05);
+  
+  /* Layout */
+  --max-width: 1440px;
+  
+  /* Transitions */
+  --transition-spring: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   3. Reset & Base Styles
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-bg);
+  /* Elegant technical architectural grid background */
+  background-image: 
+    radial-gradient(var(--grid-bg-color) 1.2px, transparent 1.2px);
+  background-size: 48px 48px;
+  background-position: center top;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-accent);
+  color: #FFFFFF;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(17, 17, 17, 0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* --------------------------------------------------------------------------
+   4. Typography & Layout Utilities
+   -------------------------------------------------------------------------- */
+.container {
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Perfectly Nineties', serif !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+}
+
+.text-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: var(--transition-spring);
+}
+
+.text-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   5. Header Components
+   -------------------------------------------------------------------------- */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1rem 0; /* Tightened padding to place header higher up */
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between; /* logo on left, nav menu on right */
+  align-items: center;
+  pointer-events: none;
+}
+
+/* Brand logo styling - Left Aligned */
+header .logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  pointer-events: auto;
+  margin-left: -1.75rem; /* Pull left to offset empty space in PNG logo asset and align visual edge */
+}
+
+.logo-img {
+  max-height: 112px; /* 4x size (28px * 4) */
+  width: auto;
+  object-fit: contain;
+  display: block;
+  filter: brightness(0) invert(1); /* make black image white for difference blend */
+}
+
+/* Menu links */
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+nav a {
+  font-family: 'Satoshi Bold', var(--font-sans);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #ffffff; /* white color is inverted to black by difference mix-blend on white bg */
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: var(--transition-fast);
+  pointer-events: auto;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 1.5px;
+  background-color: #ffffff;
+  transition: var(--transition-fast);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+nav a:hover {
+  opacity: 0.75; /* elegant hover indicator that works with negative blending */
+}
+
+.footer-logo-img {
+  max-height: 28px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Pinned Header remains same size and position when scrolled */
+header.is-scrolled {
+  padding: 1rem 0;
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 0.75rem 0;
+  }
+  header.is-scrolled {
+    padding: 0.75rem 0;
+  }
+  header .logo {
+    margin-left: -1.25rem; /* pull left on tablet to offset PNG padding */
+  }
+  nav {
+    display: block; /* Keep navigation visible on mobile since it is only 3 links now */
+  }
+  nav ul {
+    gap: 1.25rem;
+  }
+  nav a {
+    font-size: 0.8rem;
+  }
+  .logo-img {
+    max-height: 80px; /* 4x size (20px * 4) */
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 0.5rem 0;
+  }
+  header.is-scrolled {
+    padding: 0.5rem 0;
+  }
+  header .logo {
+    margin-left: -1rem; /* pull left on mobile to offset PNG padding */
+  }
+  nav ul {
+    gap: 0.85rem;
+  }
+  nav a {
+    font-size: 0.75rem;
+  }
+  .logo-img {
+    max-height: 72px; /* 4x size (18px * 4) */
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. Hero Section
+   -------------------------------------------------------------------------- */
+.hero-explainer-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero {
+  min-h: 100dvh; /* Viewport stability */
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+  text-align: center;
+}
+
+.hero-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -50dvh;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 50% 33%, #FFF991 0%, transparent 70%);
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title-container {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3.5rem;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 7.5vw, 6.5rem);
+  font-weight: 900;
+  color: var(--color-text);
+  text-transform: none;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+  line-height: 0.8;
+}
+
+/* Orange text outline wrapper or emphasis */
+.hero h1 span.accent {
+  color: var(--color-accent);
+  font-style: italic !important;
+}
+
+/* Yellow text emphasis for hero */
+.hero h1 span.yellow {
+  color: var(--color-accent); /* Matches the brand palette yellow */
+  font-style: italic !important;
+}
+
+/* Staggered letter fade-in effect matching Aceternity UI FlipWords */
+.fade-letters {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.fade-letter {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(10px);
+}
+
+.text-reveal.visible .fade-letter {
+  animation: fadeLetterIn 0.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes fadeLetterIn {
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.text-reveal.visible .fade-letter:nth-child(1) { animation-delay: 0.15s; }
+.text-reveal.visible .fade-letter:nth-child(2) { animation-delay: 0.20s; }
+.text-reveal.visible .fade-letter:nth-child(3) { animation-delay: 0.25s; }
+.text-reveal.visible .fade-letter:nth-child(4) { animation-delay: 0.30s; }
+.text-reveal.visible .fade-letter:nth-child(5) { animation-delay: 0.35s; }
+.text-reveal.visible .fade-letter:nth-child(6) { animation-delay: 0.40s; }
+.text-reveal.visible .fade-letter:nth-child(7) { animation-delay: 0.45s; }
+
+.hero p.tagline {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 300;
+  color: var(--color-text-muted);
+  max-w: 65ch;
+  margin: 0 auto;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+/* Magnetic Owner Pill CTA */
+.cta-pill-wrapper {
+  display: inline-block;
+  cursor: pointer;
+  z-index: 50;
+  transition: transform 0.1s ease;
+}
+
+.cta-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--color-text);
+  color: var(--color-bg);
+  padding: 0.6rem 1.5rem 0.6rem 0.6rem;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  border: 1px solid var(--color-text);
+  box-shadow: 0 10px 30px rgba(17, 17, 17, 0.1);
+  transition: var(--transition-spring);
+}
+
+.cta-avatar-container {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--color-accent);
+  border: 1.5px solid var(--color-bg);
+  flex-shrink: 0;
+}
+
+.cta-avatar-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cta-pill-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  color: #FFFFFF;
+  margin-left: 0.25rem;
+  transition: var(--transition-spring);
+}
+
+.cta-pill:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(255, 211, 44, 0.25);
+}
+
+.cta-pill:hover .cta-pill-icon {
+  background-color: #FFFFFF;
+  color: var(--color-accent);
+  transform: rotate(45deg);
+}
+
+.cta-pill:active {
+  transform: translateY(1px) scale(0.98); /* Tactile Feedback */
+}
+
+/* --------------------------------------------------------------------------
+   7. Intro Explainer Section
+   -------------------------------------------------------------------------- */
+.explainer {
+  padding: 5rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.explainer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.explainer-img-container {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.explainer-img {
+  position: absolute;
+  width: 143%;
+  height: 134.2%;
+  left: -28.3%;
+  top: -24.5%;
+  object-fit: fill;
+  display: block;
+}
+
+.explainer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.explainer-content p {
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.explainer-content p strong {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.explainer-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 992px) {
+  .explainer-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .explainer {
+    padding: 3.5rem 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. Project Showcase Grid (Proof of Work)
+   -------------------------------------------------------------------------- */
+.showcase {
+  padding: 5rem 0;
+  position: relative;
+}
+
+.showcase-header {
+  margin-bottom: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.showcase-header-title h2 {
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  font-weight: 900;
+}
+
+.showcase-header-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  max-width: 30ch;
+  text-align: right;
+  line-height: 1.3;
+}
+
+/* Seamless Portfolio Grid */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  margin-top: 2rem;
+  background-color: var(--color-border); /* thin border lines between cards */
+}
+
+.project-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  transition: var(--transition-spring);
+  border: 0.5px solid var(--color-border);
+}
+
+.project-image-container {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background-color: #F4F4F4;
+  border-radius: 0;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-image.mockup {
+  position: relative;
+  z-index: 1;
+  opacity: 1;
+}
+
+.project-image.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  opacity: 0;
+  background-color: #FFFFFF; /* clean white background for logos */
+  object-fit: contain; /* display logo nicely centered */
+  padding: 18%; /* give the logo breathing room */
+  box-sizing: border-box;
+}
+
+.project-image.logo.full-cover {
+  padding: 0;
+  object-fit: cover;
+  background-color: transparent;
+}
+
+/* Hover States */
+.project-card:hover .project-image.mockup {
+  opacity: 0;
+  transform: scale(1.05);
+}
+
+.project-card:hover .project-image.logo {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+.project-card .project-info {
+  display: none; /* hide text description below, visual only grid */
+}
+
+/* Shimmer Skeletal overlay */
+.project-image-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 100%
+  );
+  transition: none;
+  z-index: 2;
+  pointer-events: none;
+  transform: translateX(-200%);
+  will-change: transform;
+}
+
+.project-card:hover .project-image-container::before {
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-200%); }
+  100% { transform: translateX(400%); }
+}
+
+.project-info {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.project-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  transition: var(--transition-fast);
+}
+
+.project-meta {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+  font-weight: 300;
+}
+
+.project-tag {
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+  padding: 0.35rem 0.8rem;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--color-border-glow);
+}
+
+.project-card:hover .project-title {
+  color: var(--color-accent);
+}
+
+.project-card:hover .project-image-container {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-diffused);
+}
+
+@media (max-width: 992px) {
+  .showcase {
+    padding: 3.5rem 0;
+  }
+  .showcase-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  .showcase-header-subtitle {
+    text-align: left;
+  }
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   9. What I Do Section (Bento / Asymmetrical Grid)
+   -------------------------------------------------------------------------- */
+.services {
+  padding: 5rem 0;
+  background-color: rgba(255, 211, 44, 0.015);
+  position: relative;
+}
+
+/* Bento-Inspired Asymmetric Grid */
+.services-container {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.services-sidebar {
+  position: sticky;
+  top: 8rem;
+}
+
+.services-sidebar h2 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 900;
+  color: var(--color-text);
+  line-height: 0.95;
+  margin-bottom: 2rem;
+}
+
+.services-sidebar p {
+  font-size: 1.15rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Custom visual cards instead of standard columns */
+.service-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 2rem;
+  align-items: start;
+  transition: var(--transition-spring);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0%;
+  background-color: var(--color-accent);
+  transition: var(--transition-spring);
+}
+
+.service-icon-box {
+  width: 80px;
+  height: 80px;
+  background-color: rgba(17, 17, 17, 0.02);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+  transition: var(--transition-spring);
+}
+
+.service-icon-box svg {
+  width: 36px;
+  height: 36px;
+  stroke-width: 1.5px;
+  transition: var(--transition-spring);
+}
+
+.service-details h3 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.03em;
+}
+
+.service-details p {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.service-num {
+  position: absolute;
+  top: 2rem;
+  right: 2.5rem;
+  font-family: monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: rgba(17, 17, 17, 0.15);
+  letter-spacing: 0.05em;
+  transition: var(--transition-spring);
+}
+
+/* Hover effects */
+.service-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-premium);
+  transform: translateX(10px);
+}
+
+.service-card:hover::before {
+  height: 100%;
+}
+
+.service-card:hover .service-icon-box {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #FFFFFF;
+  transform: scale(1.05) rotate(5deg);
+}
+
+.service-card:hover .service-num {
+  color: var(--color-accent);
+}
+
+@media (max-width: 992px) {
+  .services-container {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  .services-sidebar {
+    position: relative;
+    top: 0;
+  }
+  .service-card {
+    padding: 2rem;
+    grid-template-columns: 60px 1fr;
+    gap: 1.5rem;
+  }
+  .service-icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+  }
+  .service-icon-box svg {
+    width: 28px;
+    height: 28px;
+  }
+  .service-card:hover {
+    transform: none; /* Disable shift on mobile */
+  }
+}
+
+/* --------------------------------------------------------------------------
+   10. Owner Section (Replaces CTA Section)
+   -------------------------------------------------------------------------- */
+.owner-section {
+  padding: 5rem 0;
+  background-color: rgba(255, 95, 21, 0.01);
+  position: relative;
+  overflow: hidden;
+}
+
+.owner-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.owner-photo-container {
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1.5px solid var(--color-text);
+  box-shadow: var(--shadow-diffused);
+}
+
+.owner-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: var(--transition-spring);
+  transform: scale(1.35);
+  transform-origin: 50% 15%; /* Zoom in on face and shoulders, hiding the arm */
+}
+
+.owner-photo:hover {
+  filter: grayscale(0%);
+  transform: scale(1.4);
+}
+
+.owner-tag {
+  display: inline-block;
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.owner-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-bottom: 2rem;
+}
+
+.owner-quote {
+  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+  line-height: 1.5;
+  font-weight: 500;
+  color: var(--color-text);
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1.5rem;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.owner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.owner-text p {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.owner-text p strong {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--color-text);
+  color: var(--color-bg);
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 1.25rem 2.75rem;
+  border-radius: 100px;
+  text-decoration: none;
+  border: 1px solid var(--color-text);
+  box-shadow: 0 20px 40px rgba(17, 17, 17, 0.08);
+  transition: var(--transition-spring);
+  cursor: pointer;
+}
+
+.btn-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  color: #FFFFFF;
+  transition: var(--transition-spring);
+}
+
+.btn:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-4px);
+  box-shadow: 0 30px 50px rgba(255, 211, 44, 0.25);
+}
+
+.btn:hover .btn-arrow {
+  background-color: #FFFFFF;
+  color: var(--color-accent);
+  transform: translateX(4px);
+}
+
+.btn:active {
+  transform: translateY(-1px) scale(0.98); /* Tactile */
+}
+
+@media (max-width: 992px) {
+  .owner-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  .owner-photo-container {
+    aspect-ratio: 1/1; /* Square on mobile for better space economy */
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .owner-section {
+    padding: 3.5rem 0;
+  }
+  .owner-title {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .btn {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   11. Footer & Contact Form Components
+   -------------------------------------------------------------------------- */
+footer {
+  background-color: var(--color-bg);
+  padding: 4rem 0 3rem 0;
+  position: relative;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6rem;
+  align-items: stretch;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 1.5rem 0 0 0;
+  box-shadow: none;
+}
+
+.footer-brand {
+  max-width: 320px;
+}
+
+.footer-brand .logo {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.footer-brand p {
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+
+.footer-nav-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text);
+  margin-bottom: 1.25rem;
+}
+
+.footer-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.footer-nav a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 300;
+  transition: var(--transition-fast);
+}
+
+.footer-nav a:hover {
+  color: var(--color-accent);
+  padding-left: 4px;
+}
+
+/* Contact Form styling */
+.contact-form-container {
+  background-color: #FDFDFD;
+  border: 1.5px solid var(--color-text);
+  border-radius: 24px;
+  padding: 3rem;
+  box-shadow: var(--shadow-diffused);
+}
+
+.contact-form-container h3 {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.03em;
+}
+
+.contact-form-container p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.form-group-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Label on top per Rule 6 */
+.form-group label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.9rem 1.2rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  transition: var(--transition-fast);
+  outline: none;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-accent-soft);
+}
+
+/* Tactile submit button */
+.form-submit-btn {
+  width: 100%;
+  background-color: var(--color-text);
+  color: var(--color-bg);
+  border: 1px solid var(--color-text);
+  border-radius: 8px;
+  padding: 1.1rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  box-shadow: 0 10px 20px rgba(17, 17, 17, 0.05);
+  transition: var(--transition-spring);
+}
+
+.form-submit-btn:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #FFFFFF;
+  box-shadow: 0 15px 30px rgba(255, 211, 44, 0.2);
+}
+
+.form-submit-btn:active {
+  transform: scale(0.98);
+}
+
+/* Success status overlay inside form container */
+.form-status {
+  display: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.form-status.success {
+  display: block;
+  background-color: rgba(46, 204, 113, 0.15);
+  color: #27ae60;
+  border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.form-status.error {
+  display: block;
+  background-color: rgba(231, 76, 60, 0.15);
+  color: #c0392b;
+  border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+/* Footer Bottom elements */
+.footer-bottom {
+  margin-top: 6rem;
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-copy {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-weight: 300;
+}
+
+.footer-meta-link {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.footer-meta-link:hover {
+  color: var(--color-accent);
+}
+
+@media (max-width: 992px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  footer {
+    padding: 3rem 0 2rem 0;
+  }
+  .contact-form-container,
+  .footer-left {
+    padding: 2rem;
+  }
+  .form-group-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   12. Scroll Velocity Marquee Section
+   -------------------------------------------------------------------------- */
+.marquee-section {
+  padding: 4.5rem 0; /* reduced padding since 3.3 degrees occupies less height */
+  background-color: var(--color-bg);
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.parallax {
+  position: relative;
+  overflow: hidden;
+  margin: -0.4rem 0;
+  width: 120%; /* wide enough to cover screen on 3.3 degrees tilt */
+  left: -10%; /* center the wider row */
+  transform: rotate(-3.3deg); /* tilt 3.3 degrees */
+  transform-origin: center;
+}
+
+.scroller {
+  display: flex;
+  white-space: nowrap;
+  text-align: center;
+  font-family: 'Satoshi Bold', sans-serif;
+  font-size: clamp(1.55rem, 3.1vw, 2.78rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  will-change: transform;
+}
+
+.scroller span {
+  flex-shrink: 0;
+  padding-right: 0;
+  color: var(--color-text);
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.05));
+}
