@@ -125,11 +125,6 @@ html {
 
 body {
   background-color: var(--color-bg);
-  /* Elegant technical architectural grid background */
-  background-image: 
-    radial-gradient(var(--grid-bg-color) 1.2px, transparent 1.2px);
-  background-size: 48px 48px;
-  background-position: center top;
   color: var(--color-text);
   font-family: var(--font-sans);
   font-weight: 400;
@@ -384,7 +379,7 @@ header.is-scrolled {
   margin-bottom: 1.5rem;
   position: relative;
   display: inline-block;
-  line-height: 0.8;
+  line-height: 0.95;
 }
 
 /* Orange text outline wrapper or emphasis */
@@ -410,6 +405,12 @@ header.is-scrolled {
   opacity: 0;
   filter: blur(8px);
   transform: translateY(10px);
+  padding-right: 0.12em;
+  margin-right: -0.06em;
+  padding-top: 0.15em;
+  padding-bottom: 0.15em;
+  margin-top: -0.15em;
+  margin-bottom: -0.15em;
 }
 
 .text-reveal.visible .fade-letter {
